@@ -23,11 +23,13 @@ header {
   width: 100%;
   background: url("images/pattern-bg-mobile.png") no-repeat center / cover;
   color: white;
+  position: relative;
+  z-index: 99999;
 }
 
 .header-container {
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
   margin-inline: auto;
   padding-block: 1.5em 10em;
 }
@@ -49,6 +51,7 @@ header {
 .search-form-input {
   width: 100%;
   border: none;
+  outline: none;
   padding: 1.25em 1.5em;
   font-size: 1rem;
   font-weight: 400;
@@ -57,10 +60,16 @@ header {
 .search-form-button {
   width: 75px;
   border: none;
-  background: var(--clr-very-dark-gray);
+  background-color: var(--clr-very-dark-gray);
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-form-button:hover {
+  background-color: var(--clr-dark-gray);
 }
 
 main {
@@ -69,6 +78,7 @@ main {
 
 .info-panel {
   width: 90%;
+  max-width: 1024px;
   margin-inline: auto;
   background-color: white;
   border-radius: 0.75em;
@@ -77,6 +87,7 @@ main {
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 99999;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
@@ -104,7 +115,6 @@ main {
 
 .info-map {
   height: 440px;
-  background-color: aqua;
 }
 
 footer {
@@ -115,4 +125,68 @@ footer {
 
 footer a {
   color: inherit;
+}
+
+@media (min-width: 768px) {
+  header {
+    background: url("images/pattern-bg-desktop.png") no-repeat center / cover;
+  }
+
+  .header-container {
+    padding-block: 1.5em 4em;
+  }
+
+  .search-form {
+    margin-top: 1em;
+    border-radius: 0.5em;
+  }
+
+  .search-form-input {
+    padding: 1.25em 1.5em;
+    font-size: 0.875rem;
+  }
+
+  .search-form-button {
+    width: 60px;
+  }
+
+  .info-panel-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+  }
+
+  .info-panel {
+    padding: 0.5em 1.5em;
+  }
+
+  .info-panel-item {
+    position: relative;
+    padding-block: 1em;
+  }
+
+  .info-panel-item::after {
+    content: "";
+    width: 1px;
+    height: 60%;
+    display: inline-block;
+    background: var(--clr-dark-gray);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+
+  .info-panel-item:last-child::after {
+    content: none;
+  }
+
+  .info-panel-label {
+    text-align: left;
+  }
+
+  .info-panel-value {
+    text-align: left;
+  }
 }
